@@ -1,0 +1,91 @@
+Q1. Create a policy to access all object in a specific
+bucket
+1. Sign in to the AWS Management Console.
+2. Open the IAM console.
+3. In the navigation pane, click on &quot;Policies&quot; and then click on &quot;Create policy&quot;.
+4. Choose the desired policy type (for example, select &quot;S3&quot; for policies related to Amazon S3).
+5. Under &quot;Edit permissions&quot;, click on &quot;Choose a service&quot;. Select &quot;S3&quot; and then select the desired
+actions allowed for the objects in the bucket (e.g., &quot;GetObject&quot; for read access).
+6. In the &quot;Resources&quot; section, click on &quot;Add ARN&quot;. Specify the ARN (Amazon Resource Name) of the
+specific bucket you want to grant access to.
+7. Under &quot;Review policy&quot;, provide a unique name and description for the policy.
+8. Click on &quot;Create policy&quot; to save the policy.
+
+Assign the policy to a user or group1. In the navigation pane of the IAM console, click on &quot;Users&quot; or
+&quot;&quot;, depending on whether you want to assign the policy to an individual user or a group of users2.
+Select the desired user or group.
+
+1. Click on the &quot;Permissions&quot; tab.
+2. Under &quot;Managed policies&quot;, click on &quot;Attach policies&quot;.
+3. Search for and select the policy you created earlier and click on &quot;Attach policy&quot;.
+
+It is important to note that the user or group to which the policy is assigned should also have
+necessary permissions to access the bucket. This can be accomplished by either attaching additional
+policies or by providing explicit bucket-level permissions in the policy itself.
+
+
+Q2. Create a policy to access only 2 objects in
+specific bucket
+1. Sign in to the AWS Management Console and open the IAM console.
+2. In the navigation pane, click on &quot;Policies&quot; to access the policies management page.
+3. Click on the &quot;Create policy&quot; button to create a new policy.
+4. On the &quot;Create policy&quot; page, select the &quot;JSON&quot; tab to enter the policy document in JSON format.
+5. Enter the following policy document, replacing &quot;bucket-name&quot; with the name of the specific
+bucket and &quot;object1&quot; and &quot;object2&quot; with the names of the two objects you want to allow access to:
+{
+&quot;Version&quot;: &quot;2012-10-17&quot;,
+&quot;Statement&quot;: [
+{
+&quot;Sid&quot;: &quot;AllowAccessToSpecificObjects&quot;,
+&quot;Effect&quot;: &quot;Allow&quot;,
+&quot;Action&quot;: [
+&quot;s3:GetObject&quot;,
+&quot;s3:HeadObject&quot;
+],
+&quot;Resource&quot;: [
+&quot;arn:aws:s3:::bucket-name/object1&quot;,
+&quot;arn:aws:s3:::bucket-name/object2&quot;
+]
+}
+]
+}
+
+1. Click on the &quot;Review policy&quot; button to validate the policy configuration.
+2. Provide a unique name and optional description for the policy, and click on the &quot;Create policy&quot;
+button to create the policy.
+3. Once created, you can attach this policy to IAM users, groups, or roles to allow access only to the
+specified objects in the specified bucket.
+
+
+
+Q3. Create a policy to deny the access of Specific
+Bucket
+
+
+
+Q4. Create a policy to create the user only and can
+attach policy to them
+1. Sign in to the AWS Management Console and open the IAM console.
+2. In the navigation pane, choose &quot;Policies&quot; and then &quot;Create policy&quot;.
+3. Select &quot;Create Your Own Policy&quot; and then choose &quot;Select&quot;.
+4. Enter a name and description for your policy.
+5. In the &quot;Policy Document&quot; section, specify the permissions you want to grant to the user. You can
+define the actions, resources, and conditions for the policy.
+6. Review your policy and choose &quot;Create Policy&quot; to save it.
+7. In the navigation pane, choose &quot;Users&quot; and then &quot;Add user&quot;.
+8. Enter a name for the user and choose the &quot;Access type&quot; - either &quot;Programmatic access&quot; or &quot;AWS
+Management Console access&quot; or both.
+9. Choose &quot;Next: Permissions&quot; to proceed.
+10. Select &quot;Attach existing policies directly&quot; and then search and select the policy you created earlier.
+11. Choose &quot;Next: Tags&quot; to proceed.
+12. Add any tags to the user (optional) and choose &quot;Next: Review&quot; to proceed.
+13. Review the user details and the permissions attached, and choose &quot;Create user&quot; to complete the
+process.
+14. The user will be created, and you can now share the user&#39;s access key and secret access key with
+them, or provide them with the necessary information to access the AWS Management Console.
+15. Make sure to inform the user of the security best practices and guide them on how to use their
+access responsibly.
+
+
+
+Q5. Create a policy to place the user in a group only
